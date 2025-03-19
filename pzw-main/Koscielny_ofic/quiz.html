@@ -1,0 +1,322 @@
+<!-- <!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Wędkarski</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0077cc;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            font-size: 50px;
+        }
+        .container {
+            max-width: 3000px;
+            margin: auto;
+            background: #005fa3;
+            padding: 20px;
+            border-radius: 10px;
+
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .option {
+            padding: 10px;
+            background: white;
+            color: black;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+            text-align: center;
+            height:10vh;
+            font-size: 20px;
+        }
+        .option:hover {
+            background: #ccc;
+        }
+        .correct {
+            background: #00cc44 !important;
+        }
+        .incorrect {
+            background: #cc0000 !important;
+        }
+        button{
+            margin-top: 60px;
+            height: 10vh;
+            width: 20%;
+            background-color: rgb(159, 224, 224);
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Wędkarski</h1>
+        <div id="quiz"></div>
+        <button onclick="checkAnswers()">Sprawdź wyniki</button>
+        <h2 id="result"></h2>
+    </div>
+    <script>
+        const questions = [
+            { q: "Jaka jest maksymalna długość szczupaka w Polsce?", a: ["120 cm", "150 cm", "200 cm", "90 cm"], correct: "150 cm" },
+            { q: "Jaką przynętę najczęściej stosuje się na suma?", a: ["Chleb", "Robaki", "Żywa ryba", "Ziarna"], correct: "Żywa ryba" },
+            { q: "Co to jest spinning?", a: ["Technika połowu", "Rodzaj przynęty", "Nazwa rzeki", "Typ ryby"], correct: "Technika połowu" },
+            { q: "Jaka ryba jest symbolem wędkarstwa w Polsce?", a: ["Karp", "Sum", "Szczupak", "Sandacz"], correct: "Szczupak" },
+            { q: "Co oznacza skrót PZW?", a: ["Polski Związek Wędkarski", "Profesjonalni Wędkarze Zawodowi", "Polska Wędka Zawodowa", "Prawdziwi Znawcy Wędkowania"], correct: "Polski Związek Wędkarski" },
+            { q: "Jaki jest limit połowu karpia w Polsce?", a: ["5 sztuk", "3 sztuki", "10 sztuk", "Bez limitu"], correct: "3 sztuki" },
+            { q: "Najlepszy czas na połów sandacza to?", a: ["Ranek", "Południe", "Wieczór", "Noc"], correct: "Noc" }
+        ];
+
+        function shuffle(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        function loadQuiz() {
+            const quizDiv = document.getElementById("quiz");
+            quizDiv.innerHTML = "";
+            let selectedQuestions = shuffle([...questions]).slice(0, 6);
+
+            selectedQuestions.forEach((q, index) => {
+                let questionDiv = document.createElement("div");
+                questionDiv.classList.add("question");
+                questionDiv.innerHTML = `<p>${index + 1}. ${q.q}</p>`;
+                let optionsDiv = document.createElement("div");
+                optionsDiv.classList.add("options");
+                
+                q.a.forEach(answer => {
+                    let btn = document.createElement("button");
+                    btn.classList.add("option");
+                    btn.textContent = answer;
+                    btn.dataset.answer = answer;
+                    btn.onclick = function () {
+                        btn.parentElement.querySelectorAll(".option").forEach(opt => {
+                            opt.classList.remove("selected");
+                        });
+                        btn.classList.add("selected");
+                        btn.parentElement.dataset.selected = answer;
+                    };
+                    optionsDiv.appendChild(btn);
+                });
+                questionDiv.appendChild(optionsDiv);
+                quizDiv.appendChild(questionDiv);
+                questionDiv.dataset.correct = q.correct;
+            });
+        }
+
+        function checkAnswers() {
+            let correct = 0;
+            document.querySelectorAll(".question").forEach(qDiv => {
+                let selectedAnswer = qDiv.querySelector(".options").dataset.selected;
+                let correctAnswer = qDiv.dataset.correct;
+                
+                qDiv.querySelectorAll(".option").forEach(opt => {
+                    if (opt.textContent === correctAnswer) {
+                        opt.classList.add("correct");
+                    }
+                    if (opt.textContent === selectedAnswer && selectedAnswer !== correctAnswer) {
+                        opt.classList.add("incorrect");
+                    }
+                });
+                
+                if (selectedAnswer === correctAnswer) {
+                    correct++;
+                }
+            });
+            document.getElementById("result").textContent = `Twój wynik: ${correct}/6`;
+        }
+
+        loadQuiz();
+    </script>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Wędkarski</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0077cc;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            font-size: 50px;
+        }
+        .container {
+            max-width: 3000px;
+            margin: auto;
+            background: #005fa3;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .option {
+            padding: 10px;
+            background: white;
+            color: black;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+            text-align: center;
+            height: 10vh;
+            font-size: 20px;
+        }
+        .option:hover {
+            background: #ccc;
+        }
+        .selected {
+            background: #0077cc; /* Change this color to whatever you want for the selected option */
+            color: white; /* Change text color if needed */
+        }
+        .correct {
+            background: #00cc44 !important;
+        }
+        .incorrect {
+            background: #cc0000 !important;
+        }
+        button {
+            margin-top: 60px;
+            height: 10vh;
+            width: 20%;
+            background-color: rgb(159, 224, 224);
+            font-size: 30px;
+        }
+        
+/* Style dla navbar */
+.navbar {
+    position: fixed;
+    top:0;
+    right: 0;
+}
+
+/* Przycisk w navbarze */
+.navbar-btn {
+    background-color: #007bff;  /* Niebieski kolor */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+/* Efekt przy najechaniu */
+.navbar-btn:hover {
+    background-color: #0056b3;
+}
+    </style>
+</head>
+<body>
+    
+    <div class="navbar">
+        <a href="index.html" class="navbar-btn">Strona Główna</a>
+    </div>
+    <div class="container">
+        <h1>Quiz Wędkarski</h1>
+        <div id="quiz"></div>
+        <button onclick="checkAnswers()">Sprawdź wyniki</button>
+        <h2 id="result"></h2>
+    </div>
+    <script>
+        const questions = [
+            { q: "Jaka jest maksymalna długość szczupaka w Polsce?", a: ["120 cm", "150 cm", "200 cm", "90 cm"], correct: "150 cm" },
+            { q: "Jaką przynętę najczęściej stosuje się na suma?", a: ["Chleb", "Robaki", "Żywa ryba", "Ziarna"], correct: "Żywa ryba" },
+            { q: "Co to jest spinning?", a: ["Technika połowu", "Rodzaj przynęty", "Nazwa rzeki", "Typ ryby"], correct: "Technika połowu" },
+            { q: "Jaka ryba jest symbolem wędkarstwa w Polsce?", a: ["Karp", "Sum", "Szczupak", "Sandacz"], correct: "Szczupak" },
+            { q: "Co oznacza skrót PZW?", a: ["Polski Związek Wędkarski", "Profesjonalni Wędkarze Zawodowi", "Polska Wędka Zawodowa", "Prawdziwi Znawcy Wędkowania"], correct: "Polski Związek Wędkarski" },
+            { q: "Jaki jest limit połowu karpia w Polsce?", a: ["5 sztuk", "3 sztuki", "10 sztuk", "Bez limitu"], correct: "3 sztuki" },
+            { q: "Najlepszy czas na połów sandacza to?", a: ["Ranek", "Południe", "Wieczór", "Noc"], correct: "Noc" }
+        ];
+
+        function shuffle(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        function loadQuiz() {
+            const quizDiv = document.getElementById("quiz");
+            quizDiv.innerHTML = "";
+            let selectedQuestions = shuffle([...questions]).slice(0, 6);
+
+            selectedQuestions.forEach((q, index) => {
+                let questionDiv = document.createElement("div");
+                questionDiv.classList.add("question");
+                questionDiv.innerHTML = `<p>${index + 1}. ${q.q}</p>`;
+                 let optionsDiv = document.createElement("div");
+                optionsDiv.classList.add("options");
+                
+                q.a.forEach(answer => {
+                    let btn = document.createElement("button");
+                    btn.classList.add("option");
+                    btn.textContent = answer;
+                    btn.dataset.answer = answer;
+                    btn.onclick = function () {
+                        btn.parentElement.querySelectorAll(".option").forEach(opt => {
+                            opt.classList.remove("selected");
+                        });
+                        btn.classList.add("selected");
+                        btn.parentElement.dataset.selected = answer;
+                    };
+                    optionsDiv.appendChild(btn);
+                });
+                questionDiv.appendChild(optionsDiv);
+                quizDiv.appendChild(questionDiv);
+                questionDiv.dataset.correct = q.correct;
+            });
+        }
+
+        function checkAnswers() {
+            let correct = 0;
+            document.querySelectorAll(".question").forEach(qDiv => {
+                let selectedAnswer = qDiv.querySelector(".options").dataset.selected;
+                let correctAnswer = qDiv.dataset.correct;
+                
+                qDiv.querySelectorAll(".option").forEach(opt => {
+                    if (opt.textContent === correctAnswer) {
+                        opt.classList.add("correct");
+                    }
+                    if (opt.textContent === selectedAnswer && selectedAnswer !== correctAnswer) {
+                        opt.classList.add("incorrect");
+                    }
+                });
+                
+                if (selectedAnswer === correctAnswer) {
+                    correct++;
+                }
+            });
+            document.getElementById("result").textContent = `Twój wynik: ${correct}/6`;
+        }
+
+        loadQuiz();
+    </script>
+</body>
+</html>

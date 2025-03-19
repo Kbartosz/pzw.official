@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Zdjęć</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    left:0;
+}
+
+main {
+    flex: 1;
+    padding: 1rem;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-auto-rows: 300px;
+    grid-gap: 20px;
+    grid-auto-flow: dense;
+    padding: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item figcaption {
+    padding: 0.5rem;
+    text-align: center;
+    background-color: #fff;
+}
+
+/* Style dla navbar */
+.navbar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 20000;
+}
+
+/* Przycisk w navbarze */
+.navbar-btn {
+    background-color: #007bff;  /* Niebieski kolor */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+/* Efekt przy najechaniu */
+.navbar-btn:hover {
+    background-color: #0056b3;
+}
+
+.item1 { grid-column: span 2; grid-row: span 2; }
+.item2 { grid-column: span 1; grid-row: span 1; }
+.item3 { grid-column: span 1; grid-row: span 2; }
+.item4 { grid-column: span 2; grid-row: span 1; }
+.item5 { grid-column: span 1; grid-row: span 1; }
+.item6 { grid-column: span 1; grid-row: span 2; }
+
+/* Możesz dodać więcej nieregularnych elementów według potrzeb */
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html" class="navbar-btn">Strona Główna</a>
+    </div>
+    <header>
+        <h1>Moja Galeria Zdjęć</h1>
+        <button></button>
+    </header>
+    <main>
+        <div class="gallery">
+            <figure class="gallery-item item1">
+                <img src="https://static2.lokalna24.pl/data/articles/xga-4x3-wstepnie-zaplanowane-zawody-wedkarskie-przez-pzw-kofama-renska-wies-1705048890.webp" alt="Opis zdjęcia 1">
+                <figcaption>Opis zdjęcia 1</figcaption>
+            </figure>
+            <figure class="gallery-item item2">
+                <img src="https://www.pzwtarnow.pl/images/FISHING1.jpg" alt="Opis zdjęcia 2">
+                <figcaption>Opis zdjęcia 2</figcaption>
+            </figure>
+            <figure class="gallery-item item3">
+                <img src="https://www.pzwtarnow.pl/images/zawody/369.jpg" alt="Opis zdjęcia 3">
+                <figcaption>Opis zdjęcia 3</figcaption>
+            </figure>
+            <figure class="gallery-item item4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJH7woqqgDm3Y5Iw-0d5TEmBNVSQkCfGU2Ww&s" alt="Opis zdjęcia 4">
+                <figcaption>Opis zdjęcia 4</figcaption>
+            </figure>
+            <figure class="gallery-item item5">
+                <img src="https://wedkarskiswiat.pl/wp-content/uploads/2023/03/rejestr-768x502.png" alt="Opis zdjęcia 5">
+                <figcaption>Opis zdjęcia 5</figcaption>
+            </figure>
+            <figure class="gallery-item item6">
+                <img src="https://image.ceneostatic.pl/data/products/20205671/i-polska-atlas-wod-wedkarskich-pzw.jpg" alt="Opis zdjęcia 6">
+                <figcaption>Opis zdjęcia 6</figcaption>
+            </figure>
+            <figure class="gallery-item item6">
+                <img src="https://static2.krosno112.pl/data/articles/xl-okreg-pzw-w-krosnie-zlowiono-poteznego-samca-troci-wedrownej-o-dlugosci-82-cm-1735932028-full.jpg" alt="Opis zdjęcia 6">
+                <figcaption>Opis zdjęcia 6</figcaption>
+            </figure>
+            <!-- Dodaj więcej zdjęć według potrzeby -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Moja Galeria Zdjęć</p>
+    </footer>
+</body>
+</html>
